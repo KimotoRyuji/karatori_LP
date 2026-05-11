@@ -92,16 +92,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(16,41,75,0.9
 .hero-sub{font-size:clamp(15px,2.2vw,19px);color:rgba(255,255,255,0.6);margin-bottom:2.5rem;animation:fadeUp 0.8s 0.2s ease both}
 .hero-sub strong{color:rgba(255,255,255,0.85);font-weight:700}
 .hero-stats{display:flex;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;border:1px solid rgba(204,165,88,0.3);border-radius:var(--radius-lg);overflow:hidden;animation:fadeUp 0.8s 0.3s ease both}
-.hero-stat{flex:1;min-width:160px;padding:1.25rem 1.5rem;background:rgba(255,255,255,0.04);border-right:1px solid rgba(204,165,88,0.2);text-align:center}
+.hero-stat{flex:1;min-width:140px;padding:1.25rem 1.5rem;background:rgba(255,255,255,0.04);border-right:1px solid rgba(204,165,88,0.2);text-align:center}
 .hero-stat:last-child{border-right:none}
 .stat-num{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:4px}
 .stat-num span{font-size:18px}
 .stat-label{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.5px;line-height:1.4}
 .hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;animation:fadeUp 0.8s 0.4s ease both}
-.btn-line{display:inline-flex;align-items:center;gap:8px;background:var(--line-green);color:var(--white);font-size:16px;font-weight:900;padding:16px 36px;border-radius:var(--radius);text-decoration:none;transition:transform 0.2s,filter 0.2s}
+.btn-line{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--line-green);color:var(--white);font-size:15px;font-weight:900;padding:15px 0;border-radius:var(--radius);text-decoration:none;transition:transform 0.2s,filter 0.2s;width:210px;height:52px}
 .btn-line:hover{filter:brightness(1.1);transform:translateY(-3px)}
 .btn-line svg{width:20px;height:20px;fill:white;flex-shrink:0}
-.btn-gold{display:inline-flex;align-items:center;background:var(--gold);color:var(--navy);font-size:16px;font-weight:900;padding:16px 36px;border-radius:var(--radius);text-decoration:none;transition:transform 0.2s,background 0.2s}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:var(--navy);font-size:15px;font-weight:900;padding:15px 0;border-radius:var(--radius);text-decoration:none;transition:transform 0.2s,background 0.2s;width:210px;height:52px}
 .btn-gold:hover{background:var(--gold-light);transform:translateY(-3px)}
 .hero-trial{display:inline-flex;align-items:center;gap:12px;background:rgba(169,33,36,0.18);border:1px solid rgba(169,33,36,0.5);border-radius:6px;padding:10px 24px;animation:fadeUp 0.8s 0.5s ease both}
 .trial-tag{background:var(--red);color:var(--white);font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:3px}
@@ -210,22 +210,22 @@ section{padding:80px 2rem}
 #pricing{background:var(--white);text-align:center}
 .pricing-title-row{display:flex;align-items:baseline;gap:1.5rem;justify-content:center;margin-bottom:0.5rem;flex-wrap:wrap;overflow:visible}
 .pricing-tax-note{font-size:16px;color:var(--gray-400);font-weight:400;margin-left:0.5rem}
-.trial-banner{background:var(--navy);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;max-width:800px;margin-left:auto;margin-right:auto}
+.trial-banner{background:var(--navy);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;max-width:800px;margin-left:auto;margin-right:auto}
 .trial-disc{flex-shrink:0;background:var(--red);color:var(--white);text-align:center;padding:1.25rem 1.75rem;border-radius:var(--radius)}
 .trial-disc .label{font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
 .trial-disc .num{font-family:'Oswald',sans-serif;font-size:52px;font-weight:700;line-height:1;display:flex;align-items:baseline;justify-content:center;gap:2px}
 .trial-disc .unit{font-size:22px;font-weight:700;line-height:1}
 .trial-disc .off{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;line-height:1;display:block;margin-top:2px;letter-spacing:1px}
-.trial-text{color:var(--white)}
+.trial-text{color:var(--white);text-align:center}
 .trial-text h3{font-size:22px;font-weight:900;margin-bottom:0.5rem}
 .trial-text h3 .g{color:var(--gold-light)}
 .trial-text p{font-size:14px;color:rgba(255,255,255,0.65)}
 .price-table-wrap{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-200);margin-bottom:0.75rem;max-width:800px;margin-left:auto;margin-right:auto}
 .price-table{width:100%;border-collapse:collapse;font-size:14px}
-.price-table th{background:var(--navy);color:var(--white);padding:14px 16px;text-align:center;font-weight:700;font-size:13px}
+.price-table th{background:var(--navy);color:var(--white);padding:10px 8px;text-align:center;font-weight:700;font-size:12px}
 .price-table th:first-child{text-align:left}
 .price-table th.gold-h{background:var(--gold);color:var(--navy)}
-.price-table td{padding:13px 16px;text-align:center;border-bottom:1px solid var(--gray-200);color:var(--charcoal)}
+.price-table td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--gray-200);color:var(--charcoal);font-size:13px}
 .price-table td:first-child{text-align:left;font-weight:700;color:var(--navy)}
 .price-table tr:last-child td{border-bottom:none}
 .price-table tr:nth-child(even) td{background:var(--gray-100)}
@@ -296,6 +296,12 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.35);text-align:cente
 footer a{color:rgba(255,255,255,0.35);text-decoration:none}
 
 /* RESPONSIVE */
+.trial-desc-sp{display:none}
+.trial-desc-pc{display:block}
+.sp-only{display:none}
+.pc-only{display:inline}
+.sp-only2{display:none}
+
 @media(max-width:768px){
   nav{padding:0 1rem}
   .nav-links{display:none}
@@ -308,8 +314,16 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
   .monthly-price{text-align:center}
   #hero{padding:90px 1.25rem 4rem}
   .hero-stats{flex-direction:column}
-  .hero-stat{border-right:none;border-bottom:1px solid rgba(204,165,88,0.2)}
+  .hero-stat{border-right:none;border-bottom:1px solid rgba(204,165,88,0.2);text-align:center;padding:1rem 1.25rem}
   .hero-stat:last-child{border-bottom:none}
+  .stat-num{font-size:32px;text-align:center}
+  .stat-num span{font-size:18px}
+  .stat-label{font-size:13px;line-height:1.5;text-align:center}
+  .trial-desc-sp{display:block}
+  .trial-desc-pc{display:none}
+  .sp-only{display:inline}
+  .pc-only{display:none}
+  .sp-only2{display:inline}
   .ba-row{flex-direction:column}
   .ba-divider{width:100%;height:40px;font-size:16px}
   .ba-pairs{padding:0 1rem}
@@ -345,11 +359,11 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">賃貸物件撮影サービス<span style="display:block;font-size:11px;letter-spacing:1.5px;opacity:0.8;margin-top:3px;">東京・埼玉・千葉・神奈川対応</span></div>
-    <h1 class="hero-catch"><span style="white-space:nowrap">ライバルと同じ写真で、</span><br><span class="accent">満足していませんか？</span></h1>
-    <p class="hero-sub">スマホ写真が<strong>内見率を下げている</strong>かもしれません。<br>プロの撮影・動画・バーチャルステージングで、反響を変えましょう。</p>
+    <div class="hero-eyebrow">賃貸物件撮影サービス&nbsp;&nbsp;東京・埼玉・千葉・神奈川対応</div>
+    <h1 class="hero-catch"><span style="white-space:nowrap">ライバルと同じ写真で</span><br><span class="accent">満足していませんか？</span></h1>
+    <p class="hero-sub">スマホ写真が<strong>内見率を下げている</strong>かもしれません。<br class="sp-only">プロの撮影・動画・バーチャルステージングで、<br>反響を変えましょう。</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="stat-num">翌<span>日</span></div><div class="stat-label">最短納品<br>スピード対応</div></div>
+      <div class="hero-stat"><div class="stat-num">翌日</div><div class="stat-label">最短納品<br>スピード対応</div></div>
       <div class="hero-stat"><div class="stat-num">3<span>種類</span></div><div class="stat-label">３種類のサービス<br>ワンストップ提供</div></div>
       <div class="hero-stat"><div class="stat-num">40<span>%</span></div><div class="stat-label">初回フルセット<br>お試し割引</div></div>
       <div class="hero-stat"><div class="stat-num">¥0</div><div class="stat-label">ポータル動画<br>掲載料不要</div></div>
@@ -370,7 +384,7 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
 <section id="carousel-section">
   <div class="carousel-header">
     <p class="section-label">BEFORE / AFTER</p>
-    <h2 class="section-title" style="color:#fff;">プロの撮影でここまで変わる</h2>
+    <h2 class="section-title" style="color:#fff;white-space:nowrap;">プロの撮影でここまで変わる</h2>
   </div>
   <div class="ba-pairs">
     <div>
@@ -425,8 +439,8 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
       </div>
     </div>
     <div class="why-answer">
-      <h3>カラトリが<span class="g">すべて</span>改善いたします。</h3>
-      <p>写真・動画・バーチャルステージングを<br>ワンストップでご提供します。</p>
+      <h3>カラトリが<span class="g">すべて</span>改善いたします</h3>
+      <p><span class="pc-only">写真・動画・バーチャルステージングをワンストップでご提供します。</span><span class="sp-only2">写真・動画<br>バーチャルステージングをワンストップでご提供します。</span></p>
     </div>
   </div>
 </section>
@@ -484,7 +498,7 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
   <div class="container">
     <div class="text-center" style="margin-bottom:2.5rem">
       <p class="section-label">VIRTUAL HOME STAGING</p>
-      <h2 class="section-title">空室でも、暮らしのイメージを伝える</h2>
+      <h2 class="section-title">空室でも伝わる<br>暮らしのイメージ</h2>
       <div class="divider center"></div>
     </div>
     <div class="staging-inner">
@@ -595,13 +609,13 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
       </div>
       <div class="trial-text">
         <h3>フルセット <span class="g">5件まで</span> 40%OFF</h3>
-        <p>はじめてのご依頼に限り、<br>フルセットを最初の5件まで大幅割引でご提供。<br>まずはお試しください。</p>
+        <p class="trial-desc-pc">はじめてのご依頼に限り、<br>フルセットを最初の5件まで大幅割引でご提供。<br>まずはお試しください。</p><p class="trial-desc-sp">はじめてのご依頼に限り、<br>フルセットを最初の5件まで大幅割引でご提供。<br>まずはお試しください。</p>
       </div>
     </div>
     <div class="price-table-wrap">
       <table class="price-table">
         <thead>
-          <tr><th>間取り</th><th>写真撮影</th><th>ルームツアー動画</th><th>駅からの導線動画</th><th class="gold-h">フルセット</th></tr>
+          <tr><th style="white-space:nowrap">間取り</th><th style="white-space:nowrap">写真撮影</th><th>ルームツアー<br>動画</th><th>駅からの<br>導線動画</th><th class="gold-h">フルセット</th></tr>
         </thead>
         <tbody>
           <tr><td>1K・1R</td><td>7,000円</td><td>10,000円</td><td>7,000円</td><td class="gold">20,000円</td></tr>
@@ -612,12 +626,12 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
         </tbody>
       </table>
     </div>
-    <p class="price-note">※ 2LDK以上は1部屋追加ごとに各サービス＋1,000円、フルセットは＋2,000円。<br>　上記は各間取りの目安です。</p>
+    <p class="price-note">※ 2LDK以上は1部屋追加ごとに各サービス＋1,000円、<br>　フルセットは＋2,000円。上記は各間取りの目安です。</p>
     <div class="monthly-plan">
       <div>
         <span class="monthly-label">月額プラン</span>
-        <h3>フルセット 5件 まとめてお得</h3>
-        <p>5件以上ご依頼の場合は月額プランがお得です。<br>※以降1セット 18,000円（税別）<br>※1K・1Rを基準とし、間取りに応じて料金は変動します。</p>
+        <h3 style="white-space:nowrap">フルセット 5件 まとめてお得</h3>
+        <p>5件以上ご依頼の場合は月額プランがお得です。※以降1セット 18,000円（税別）<br>※1K・1Rを基準とし、<br>間取りに応じて料金は変動します。</p>
       </div>
       <div class="monthly-price">
         <div class="amount">90,000<span class="unit">円</span></div>
