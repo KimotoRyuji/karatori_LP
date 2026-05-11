@@ -208,7 +208,7 @@ section{padding:80px 2rem}
 
 /* PRICING */
 #pricing{background:var(--white);text-align:center}
-.pricing-title-row{display:flex;align-items:baseline;gap:1.5rem;justify-content:center;margin-bottom:0.5rem;flex-wrap:wrap}
+.pricing-title-row{display:flex;align-items:baseline;gap:1.5rem;justify-content:center;margin-bottom:0.5rem;flex-wrap:wrap;overflow:visible}
 .pricing-tax-note{font-size:16px;color:var(--gray-400);font-weight:400;margin-left:0.5rem}
 .trial-banner{background:var(--navy);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;max-width:800px;margin-left:auto;margin-right:auto}
 .trial-disc{flex-shrink:0;background:var(--red);color:var(--white);text-align:center;padding:1.25rem 1.75rem;border-radius:var(--radius)}
@@ -345,7 +345,7 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span class="dot"></span>賃貸物件撮影サービス｜東京・埼玉・千葉・神奈川対応</div>
+    <div class="hero-eyebrow">賃貸物件撮影サービス<span style="display:block;font-size:11px;letter-spacing:1.5px;opacity:0.8;margin-top:3px;">東京・埼玉・千葉・神奈川対応</span></div>
     <h1 class="hero-catch">ライバルと同じ写真で、<br><span class="accent">満足していませんか？</span></h1>
     <p class="hero-sub">スマホ写真が<strong>内見率を下げている</strong>かもしれません。<br>プロの撮影・動画・バーチャルステージングで、反響を変えましょう。</p>
     <div class="hero-stats">
@@ -578,7 +578,10 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
     <div class="text-center">
       <p class="section-label">PRICING</p>
       <div class="pricing-title-row">
-        <h2 class="section-title" style="margin-bottom:0">料金プラン<span class="pricing-tax-note">（税別）</span></h2>
+        <div style="position:relative;display:inline-block;">
+          <h2 class="section-title" style="margin-bottom:0;text-align:center;">料金プラン</h2>
+          <span class="pricing-tax-note" style="position:absolute;right:-60px;bottom:4px;">（税別）</span>
+        </div>
       </div>
       <div class="divider center"></div>
     </div>
