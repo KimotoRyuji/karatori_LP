@@ -202,7 +202,7 @@ section{padding:80px 2rem}
 .video-panel{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden}
 .video-panel-label{background:var(--navy);color:var(--white);font-size:12px;font-weight:700;letter-spacing:1px;padding:8px 16px;display:flex;align-items:center;gap:8px}
 .video-panel-label .vp-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
-.video-placeholder{background:#f0ece4;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem}
+.video-placeholder{background:#f0ece4;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem}.video-embed{position:relative;aspect-ratio:16/9}.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .video-placeholder svg{width:52px;height:36px;opacity:0.35}
 .video-placeholder p{font-size:12px;color:var(--gray-400);text-align:center;line-height:1.5}
 
@@ -522,7 +522,7 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
           <h3>ルームツアー動画</h3>
         </div>
         <p>物件内部を一本の動画で紹介。<br>URLを送るだけで問い合わせ顧客のモチベーションが上がります。</p>
-        <a href="#" class="sample-link">サンプルはこちら →（URL準備中）</a><br>
+        <a href="https://youtu.be/JmUYTaLC82Y" target="_blank" class="sample-link">サンプルはこちら →</a><br>
         <span class="service-badge" style="margin-top:0.75rem;display:inline-block;">1K/1R 10,000円〜</span>
       </div>
       <div class="service-card">
@@ -531,7 +531,7 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
           <h3>駅からの導線動画</h3>
         </div>
         <p>最寄り駅から物件まで歩いた動画。<br>アクセスの良さや周辺環境を視覚的に伝え、内見率を向上させます。</p>
-        <a href="#" class="sample-link">サンプルはこちら →（URL準備中）</a><br>
+        <a href="https://youtu.be/H23lAX4O0Qg" target="_blank" class="sample-link">サンプルはこちら →</a><br>
         <span class="service-badge" style="margin-top:0.75rem;display:inline-block;">1K/1R 7,000円〜</span>
       </div>
       <div class="service-card featured">
@@ -621,18 +621,16 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
           <div class="video-panel-label">
             <span class="vp-dot"></span>ルームツアー動画サンプル
           </div>
-          <div class="video-placeholder">
-            <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#c0b8a8"/><path d="M45 24 27 14v20z" fill="#fff"/></svg>
-            <p>サンプル動画<br>準備中</p>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/JmUYTaLC82Y" title="ルームツアー動画サンプル" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <div class="video-panel">
           <div class="video-panel-label">
             <span class="vp-dot"></span>駅からの導線動画サンプル
           </div>
-          <div class="video-placeholder">
-            <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#c0b8a8"/><path d="M45 24 27 14v20z" fill="#fff"/></svg>
-            <p>サンプル動画<br>準備中</p>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/H23lAX4O0Qg" title="駅からの導線動画サンプル" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
