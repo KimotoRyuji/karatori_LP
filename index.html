@@ -251,7 +251,7 @@ section{padding:80px 2rem}
 /* FLOW */
 #flow{background:var(--cream)}
 .flow-list{display:flex;flex-direction:column;gap:0;max-width:720px;margin:0 auto;position:relative}
-.flow-list::before{content:'';position:absolute;left:31px;top:0;bottom:0;width:2px;background:var(--gray-200);z-index:0}
+.flow-list::before{content:'';position:absolute;left:31px;top:56px;bottom:56px;width:2px;background:var(--gray-200);z-index:0}
 .flow-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem 0;position:relative;z-index:1}
 .flow-circle{width:64px;height:64px;border-radius:50%;background:var(--white);border:2px solid var(--gray-200);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
 .flow-circle-num{font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;line-height:1}
@@ -389,7 +389,7 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
   .monthly-price .amount{font-size:42px}
 
   /* Flow */
-  .flow-list::before{left:31px}
+  .flow-list::before{left:31px;top:56px;bottom:56px}
   .flow-item-body h3{font-size:15px}
   .flow-item-body p{font-size:12px}
 
@@ -612,12 +612,16 @@ footer a{color:rgba(255,255,255,0.35);text-decoration:none}
         <div class="problem-card-text"><h3>返信後の反響が低い</h3><p>問い合わせはくるものの、返信後の反響が低く内見につながらない。</p></div>
       </div>
       <div class="problem-card">
-        <svg class="problem-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="22" r="10" stroke="#10294b" stroke-width="2.5"/><path d="M26 32 L26 44" stroke="#10294b" stroke-width="2.5" stroke-linecap="round"/><path d="M18 44 L34 44" stroke="#10294b" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="20" x2="26" y2="26" stroke="#a92124" stroke-width="2.5" stroke-linecap="round"/><line x1="26" y1="26" x2="32" y2="20" stroke="#a92124" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <div class="problem-card-text"><h3>スタッフの時間が奪われる</h3><p>スタッフの時間が撮影に奪われる。<br>また、クオリティにばらつきが生じる。</p></div>
+        <svg class="problem-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="18" stroke="#10294b" stroke-width="2.5"/><line x1="26" y1="26" x2="26" y2="16" stroke="#10294b" stroke-width="2.5" stroke-linecap="round"/><line x1="26" y1="26" x2="36" y2="26" stroke="#a92124" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="26" r="2" fill="#10294b"/></svg>
+        <div class="problem-card-text"><h3>スタッフの時間が奪われる</h3><p>スタッフの時間が撮影に奪われる。また、クオリティにばらつきが生じる。</p></div>
       </div>
       <div class="problem-card">
-        <svg class="problem-icon" viewBox="0 0 52 52" fill="none"><rect x="6" y="14" width="40" height="26" rx="2" stroke="#10294b" stroke-width="2.5"/><circle cx="26" cy="27" r="7" stroke="#10294b" stroke-width="2"/><path d="M23 27 L29 27 M26 24 L26 30" stroke="#a92124" stroke-width="2" stroke-linecap="round"/><line x1="36" y1="8" x2="36" y2="14" stroke="#10294b" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="8" x2="16" y2="14" stroke="#10294b" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="problem-icon" viewBox="0 0 52 52" fill="none"><rect x="4" y="12" width="44" height="28" rx="6" stroke="#10294b" stroke-width="2.5"/><polygon points="21,18 21,34 35,26" fill="#a92124"/></svg>
         <div class="problem-card-text"><h3>動画掲載コストが割に合わない</h3><p>動画コンテンツを使いたいが、掲載コストが高くて割に合わない。</p></div>
+      </div>
+      <div class="problem-card">
+        <svg class="problem-icon" viewBox="0 0 52 52" fill="none"><circle cx="22" cy="13" r="8" stroke="#10294b" stroke-width="2.5"/><path d="M8 42 C8 23 36 23 36 42" stroke="#10294b" stroke-width="2.5" stroke-linecap="round"/><path d="M38 4 L35 12 L40 12 L37 20" stroke="#a92124" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="problem-card-text"><h3>オーナー様の満足度が上がらない</h3><p>空室が長引き、オーナーへの提案力の弱さが管理受託の維持・獲得に影響している。</p></div>
       </div>
     </div>
     <div class="why-answer">
