@@ -9,6 +9,19 @@
 <meta name="author" content="カラトリ（木本隆志）">
 <link rel="canonical" href="https://karatori.com/">
 
+<!-- ============================================================
+     Google Analytics 4
+     ★ 下記の G-KZC1HW79FJ を実際の測定IDに差し替えてください
+        https://analytics.google.com → 管理 → データストリーム → 測定ID
+     ============================================================ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KZC1HW79FJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KZC1HW79FJ');
+</script>
+
 <!-- OGP -->
 <meta property="og:title" content="カラトリ｜賃貸物件撮影サービス">
 <meta property="og:description" content="写真・動画・バーチャルステージングをワンストップで。最短翌日納品。東京・埼玉・千葉・神奈川対応。">
@@ -1042,6 +1055,138 @@ function toggleFaq(el){
   document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
   if(!open){ans.classList.add('open');item.classList.add('open');}
 }
+</script>
+
+<!-- ============================================================
+     クリック計測 & QRアクセス判定スクリプト
+     ★ GA4の測定IDを上記 <head> タグと同じものに揃えてください
+     ============================================================ -->
+<script>
+(function(){
+  // ----------------------------------------------------------------
+  // 1. GA4ヘルパー：gtag が読み込まれるまで待ってからイベントを送信
+  // ----------------------------------------------------------------
+  function sendEvent(eventName, params){
+    if(typeof gtag === 'function'){
+      gtag('event', eventName, params);
+    }
+  }
+
+  // ----------------------------------------------------------------
+  // 2. QRコード（チラシ）からのアクセスを判定する
+  //
+  //    判定ロジック（3段階）：
+  //    ① URLに ?utm_source=flyer などのパラメータがある → 確定計測
+  //    ② URLに ?from=chirashi / ?from=qr などがある   → 確定計測
+  //    ③ ①②がない場合 → Direct + モバイルで「QR経由の可能性あり」として記録
+  //
+  //    ★ QRが https://karatori.com/ に直接リンクしている場合：
+  //      サーバー（.htaccess や Netlify/Vercel のリダイレクト設定）で
+  //      /q → /?utm_source=flyer&utm_medium=qr&utm_campaign=chirashi_2026
+  //      のリダイレクトを追加し、QRを /q に書き換えると完璧に計測できます。
+  //      （チラシ印刷済みで変更不可の場合は ③ の近似値で対応）
+  // ----------------------------------------------------------------
+  (function detectQRAccess(){
+    var params = new URLSearchParams(window.location.search);
+
+    // ① UTMパラメータによる確定判定
+    var utmSource   = params.get('utm_source')   || '';
+    var utmMedium   = params.get('utm_medium')   || '';
+    var utmCampaign = params.get('utm_campaign') || '';
+
+    if(utmSource || utmMedium || utmCampaign){
+      // GA4は utm_* を自動的にセッションパラメータとして取得するので
+      // ここでは session_start イベントに追加のラベルだけ記録
+      sendEvent('qr_landing', {
+        source    : utmSource   || '(not set)',
+        medium    : utmMedium   || '(not set)',
+        campaign  : utmCampaign || '(not set)',
+        method    : 'utm_param'
+      });
+      return;
+    }
+
+    // ② 独自パラメータ（?from=chirashi など）
+    var fromParam = params.get('from') || params.get('ref') || '';
+    if(fromParam){
+      sendEvent('qr_landing', {
+        source  : fromParam,
+        medium  : 'print',
+        campaign: 'chirashi',
+        method  : 'from_param'
+      });
+      return;
+    }
+
+    // ③ Direct + モバイル → QR経由の可能性あり（近似）
+    var isDirect = (document.referrer === '');
+    var isMobile = /iPhone|Android|iPad/i.test(navigator.userAgent);
+    if(isDirect && isMobile){
+      sendEvent('qr_landing_probable', {
+        note   : 'Direct+Mobile: チラシQR経由の可能性あり',
+        method : 'heuristic'
+      });
+    }
+  })();
+
+  // ----------------------------------------------------------------
+  // 3. クリックイベントの計測
+  //    計測対象：LINE / メール / 電話 / YouTubeサンプル / CTA各種
+  // ----------------------------------------------------------------
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a');
+    if(!el) return;
+
+    var href  = el.getAttribute('href') || '';
+    var text  = (el.innerText || el.textContent || '').trim().replace(/\s+/g,' ').substring(0,50);
+
+    // LINE
+    if(href.includes('lin.ee') || href.includes('line.me')){
+      sendEvent('click_line', {
+        link_text : text,
+        link_url  : href
+      });
+      return;
+    }
+
+    // メール
+    if(href.startsWith('mailto:')){
+      sendEvent('click_email', {
+        link_text : text,
+        email     : href.replace('mailto:','')
+      });
+      return;
+    }
+
+    // 電話
+    if(href.startsWith('tel:')){
+      sendEvent('click_phone', {
+        link_text : text,
+        phone     : href.replace('tel:','')
+      });
+      return;
+    }
+
+    // YouTubeサンプル動画
+    if(href.includes('youtu')){
+      sendEvent('click_youtube_sample', {
+        link_text : text,
+        link_url  : href
+      });
+      return;
+    }
+
+    // ページ内 CTA（料金プランを見る・お試し価格 等）
+    if(href.startsWith('#')){
+      sendEvent('click_internal_cta', {
+        link_text : text,
+        anchor    : href
+      });
+      return;
+    }
+  });
+
+})();
 </script>
 </body>
 </html>
