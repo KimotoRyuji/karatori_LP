@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>フォトクリーニング｜スマホで撮るだけ、掲載品質の物件写真に</title>
+<meta name="description" content="不動産の物件写真をボタンひとつで自動補正。暗い・傾く・色がにごるスマホ写真を、撮り直しなしで掲載品質に。無料でお試しいただけます。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --surface:#FFFFFF; --surface2:#F4F2EE; --ink-soft:#FBFAF8;
+    --text:#1A1A1A; --muted:#767066; --border:#E7E3DA;
+    --primary:#1A1A1A; --primary-ink:#FFFFFF; --accent:#C0392B; --accent-ink:#FFFFFF;
+    --ok:#2E7D32; --radius:4px; --shadow:0 14px 40px rgba(26,26,26,.12);
+    --font:"Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-head:"Playfair Display","Noto Serif JP",serif;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.8;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  /* 日本語の改行を自然な文節位置に（対応ブラウザ）。未対応でも通常の折り返しにフォールバック */
+  .lead,.sec-head p,.qcard p,.fcard p,.step p,.final p,.trust li,.gcap{word-break:auto-phrase;line-break:strict;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 14px;}
+  h1,h2,h3{font-family:var(--font-head);font-weight:700;letter-spacing:.01em;line-height:1.3;}
+  .btn{display:inline-block;border:none;border-radius:var(--radius);padding:16px 30px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease;}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 22px rgba(192,57,43,.28);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(192,57,43,.34);}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);}
+  .btn-ghost:hover{border-color:var(--text);}
+
+  /* ヘッダー */
+  .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--border);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{font-family:var(--font-head);font-size:20px;font-weight:700;text-decoration:none;letter-spacing:.02em;}
+  .brand .dot{color:var(--accent);}
+  .nav .navcta{font-size:14px;padding:10px 18px;}
+
+  /* ヒーロー */
+  .hero{padding:64px 0 32px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;}
+  .hero h1{font-size:44px;margin:0 0 20px;}
+  .hero .lead{font-size:17px;color:#3a3a3a;margin:0 0 28px;max-width:34em;}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .hero .note{font-size:12px;color:var(--muted);margin:16px 0 0;}
+
+  /* Before/After スライダー */
+  .ba{position:relative;width:100%;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);user-select:none;touch-action:none;background:var(--surface2);}
+  .ba.wide{aspect-ratio:4/3;}  /* 横長のヒーロー写真用 */
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .ba .after-wrap{position:absolute;inset:0;width:100%;overflow:hidden;clip-path:inset(0 50% 0 0);}
+  .ba .after-wrap img{width:100%;height:100%;object-fit:cover;}
+  .ba .tag{position:absolute;top:12px;font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 11px;border-radius:999px;background:rgba(26,26,26,.72);color:#fff;}
+  .ba .tag.b{right:12px;} .ba .tag.a{left:12px;background:var(--accent);}
+  .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:40px;margin-left:-20px;cursor:ew-resize;display:flex;align-items:center;justify-content:center;}
+  .ba .handle::before{content:"";position:absolute;top:0;bottom:0;left:19px;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.12);}
+  .ba .knob{width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:15px;font-weight:700;position:relative;z-index:2;}
+
+  /* セクション共通 */
+  section{padding:64px 0;}
+  .sec-head{text-align:center;max-width:40em;margin:0 auto 44px;}
+  .sec-head h2{font-size:32px;margin:0 0 14px;}
+  .sec-head p{color:var(--muted);margin:0;font-size:15px;}
+  .alt{background:var(--ink-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+
+  /* 課題カード */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .qcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 22px;text-align:center;}
+  .qcard .ic{font-size:30px;margin-bottom:10px;}
+  .qcard h3{font-size:18px;margin:0 0 8px;}
+  .qcard p{margin:0;font-size:14px;color:var(--muted);}
+
+  /* Before/Afterギャラリー */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .gal .gcap{font-size:13px;color:var(--muted);margin:10px 2px 0;text-align:center;}
+
+  /* 特徴 */
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .fcard{padding:4px;}
+  .fcard .num{font-family:var(--font-head);font-size:15px;color:var(--accent);font-weight:700;letter-spacing:.1em;}
+  .fcard h3{font-size:20px;margin:6px 0 10px;}
+  .fcard p{margin:0;font-size:14.5px;color:#3a3a3a;}
+
+  /* ステップ */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s;}
+  .step{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:30px 22px 24px;}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--font-head);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 6px 16px rgba(192,57,43,.3);}
+  .step h3{font-size:17px;margin:6px 0 8px;}
+  .step p{margin:0;font-size:14px;color:var(--muted);}
+
+  /* 対象者 */
+  .who{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .chip{border:1px solid var(--border);border-radius:999px;padding:11px 20px;font-size:14px;font-weight:500;background:var(--surface);}
+  .chip b{color:var(--accent);}
+
+  /* 締めCTA */
+  .final{background:var(--primary);color:var(--primary-ink);text-align:center;border-radius:0;}
+  .final h2{font-size:34px;margin:0 0 16px;color:#fff;}
+  .final p{color:rgba(255,255,255,.8);margin:0 0 30px;font-size:15px;}
+  .final .btn-primary{box-shadow:0 10px 30px rgba(192,57,43,.45);}
+  .final .note{font-size:12px;color:rgba(255,255,255,.55);margin-top:18px;}
+
+  footer.ft{padding:36px 0;text-align:center;color:var(--muted);font-size:12px;}
+  footer.ft a{color:var(--accent);text-decoration:none;}
+
+  /* ヒーロー: サブリンク・信頼バッジ */
+  .sublink{margin:14px 0 0;font-size:14px;}
+  .sublink a{color:var(--muted);text-decoration:none;}
+  .sublink a:hover{color:var(--accent);}
+  .trust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;padding:0;margin:22px 0 0;}
+  .trust li{position:relative;padding-left:20px;font-size:13px;color:#3a3a3a;}
+  .trust li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700;}
+  /* 特長の最重要カード（差別化）を強調 */
+  .fcard-hl{background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:22px 20px;}
+  /* モバイル追従CTAバー */
+  .mobicta{display:none;}
+  @media(max-width:860px){
+    .mobicta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px max(10px,env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-top:1px solid var(--border);box-shadow:0 -6px 20px rgba(0,0,0,.06);}
+    .mobicta .btn{display:block;width:100%;text-align:center;padding:15px;}
+    body{padding-bottom:86px;}
+  }
+  @media(max-width:860px){
+    .hero{padding:40px 0 8px;}
+    .hero-grid{grid-template-columns:1fr;gap:30px;}
+    .hero h1{font-size:33px;}
+    .ba{max-width:420px;margin:0 auto;}
+    .cols,.gal,.feat,.steps{grid-template-columns:1fr;}
+    .sec-head h2{font-size:26px;}
+    .final h2{font-size:27px;}
+    section{padding:48px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">フォトクリーニング<span class="dot">.</span></a>
+    <a class="btn btn-primary navcta cta" href="#">無料で試す</a>
+  </div>
+</header>
+
+<div class="mobicta"><a class="btn btn-primary cta" href="#">無料で試す（登録不要）</a></div>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">不動産の物件写真を、もっと魅力的に</p>
+      <h1>スマホで撮るだけ。<br>掲載品質の物件写真に。</h1>
+      <p class="lead">暗い・傾き・色のにごり——その場で自動補正。<br>撮り直しのストレスなく、反響につながる部屋写真に仕上がります。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary cta" href="#">無料で試す（登録不要）</a>
+      </div>
+      <p class="sublink"><a href="#how">▸ まず使い方を見る</a></p>
+      <ul class="trust">
+        <li>賃貸撮影サービス「カラトリ」提供</li>
+        <li>登録不要・その場ですぐ確認</li>
+      </ul>
+    </div>
+    <div>
+      <div class="ba wide" data-ba>
+        <img src="img/hero_before.jpg" alt="補正前の物件写真">
+        <div class="after-wrap"><img src="img/hero_after.jpg" alt="補正後の物件写真"></div>
+        <span class="tag b">補正前</span>
+        <span class="tag a">補正後</span>
+        <div class="handle"><div class="knob">⇆</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" style="color:var(--accent)">こんなお悩み、ありませんか？</p>
+      <h2>「自分で撮ると、なんだか見栄えがしない」</h2>
+      <p>スマホでの物件撮影には、どうしても“限界”があります。</p>
+    </div>
+    <div class="cols">
+      <div class="qcard">
+        <div class="ic">🌑</div>
+        <h3>室内が暗い</h3>
+        <p>窓の明るさに引っぱられて、部屋の中が暗く沈んでしまう。</p>
+      </div>
+      <div class="qcard">
+        <div class="ic">📐</div>
+        <h3>傾き・ゆがみ</h3>
+        <p>壁や柱が斜めに写って、落ち着かない印象に。広角でゆがむことも。</p>
+      </div>
+      <div class="qcard">
+        <div class="ic">🟡</div>
+        <h3>色がにごる</h3>
+        <p>照明の色かぶりで、壁紙が黄ばんで見え、清潔感が伝わらない。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="examples">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Before / After</p>
+      <h2>ハンドルを動かして見くらべ</h2>
+      <p>すべて、スマホで撮った写真をそのまま自動補正したものです。<br>つまみを左右に動かすと、補正前と補正後を見くらべられます。</p>
+    </div>
+    <div class="gal">
+      <div>
+        <div class="ba wide" data-ba>
+          <img src="img/living_before.jpg" alt="補正前">
+          <div class="after-wrap"><img src="img/living_after.jpg" alt="補正後"></div>
+          <span class="tag b">前</span><span class="tag a">後</span>
+          <div class="handle"><div class="knob">⇆</div></div>
+        </div>
+        <p class="gcap">リビング・LDK</p>
+      </div>
+      <div>
+        <div class="ba wide" data-ba>
+          <img src="img/bedroom_before.jpg" alt="補正前">
+          <div class="after-wrap"><img src="img/bedroom_after.jpg" alt="補正後"></div>
+          <span class="tag b">前</span><span class="tag a">後</span>
+          <div class="handle"><div class="knob">⇆</div></div>
+        </div>
+        <p class="gcap">洋室</p>
+      </div>
+      <div>
+        <div class="ba wide" data-ba>
+          <img src="img/bath_before.jpg" alt="補正前">
+          <div class="after-wrap"><img src="img/bath_after.jpg" alt="補正後"></div>
+          <span class="tag b">前</span><span class="tag a">後</span>
+          <div class="handle"><div class="knob">⇆</div></div>
+        </div>
+        <p class="gcap">浴室</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">フォトクリーニングの特長</p>
+      <h2>安心して使えて、かんたん・速い</h2>
+    </div>
+    <div class="feat">
+      <div class="fcard fcard-hl">
+        <span class="num">01</span>
+        <h3>“実物のまま”だから安心</h3>
+        <p>画像生成AIは一切使わず、実際に写っているものだけを補正します。家具や広さを作り変えないので、おとり広告の心配なく不動産広告に使えます。</p>
+      </div>
+      <div class="fcard">
+        <span class="num">02</span>
+        <h3>完全自動</h3>
+        <p>明るさ・傾き・色・立体感まで、まとめて自動調整。むずかしい操作はいりません。気になるところは −／＋ ボタンで微調整もできます。</p>
+      </div>
+      <div class="fcard">
+        <span class="num">03</span>
+        <h3>スマホ1枚でOK</h3>
+        <p>特別なカメラも、HDR撮影のような専門テクニックも不要。いつものスマホで撮った1枚を、そのままアップするだけです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">使い方</p>
+      <h2>たった3ステップ</h2>
+      <p>登録もインストールも不要。ブラウザだけで完結します。</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>写真を選ぶ</h3>
+        <p>スマホやパソコンから、物件写真を選びます。複数枚まとめてもOK。</p>
+      </div>
+      <div class="step">
+        <h3>自動で補正</h3>
+        <p>アップすると数秒で自動補正。必要なら傾き・あおりを微調整できます。</p>
+      </div>
+      <div class="step">
+        <h3>保存するだけ</h3>
+        <p>できあがった写真をダウンロード。連番のファイル名でまとめて保存も。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">こんな方へ</p>
+      <h2>物件写真にかける時間を、もっと短く</h2>
+    </div>
+    <div class="who">
+      <span class="chip">🏠 不動産<b>仲介・管理会社</b></span>
+      <span class="chip">📸 撮影が<b>苦手な担当者</b></span>
+      <span class="chip">⏱ 掲載スピードを<b>上げたい方</b></span>
+      <span class="chip">🔁 撮り直しを<b>減らしたい方</b></span>
+    </div>
+  </div>
+</section>
+
+
+<section class="final">
+  <div class="wrap">
+    <h2>まずは1枚、試してみませんか？</h2>
+    <p>お手元の物件写真が、どれだけ変わるか。数秒でお確かめいただけます。</p>
+    <a class="btn btn-primary cta" href="#">無料で試してみる</a>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <p>フォトクリーニング — 賃貸物件撮影サービス「カラトリ」より</p>
+    <p>© 2026 カラトリ</p>
+  </div>
+</footer>
+
+<script>
+  // 「無料で試す」リンク先（公開時にツールのURLへ差し替え）
+  var TOOL_URL = '../';
+  [].forEach.call(document.querySelectorAll('a.cta'), function(a){ a.setAttribute('href', TOOL_URL); });
+
+  // Before/After スライダー
+  [].forEach.call(document.querySelectorAll('[data-ba]'), function(ba){
+    var wrap=ba.querySelector('.after-wrap'), handle=ba.querySelector('.handle');
+    var dragging=false;
+    function setPos(clientX){
+      var r=ba.getBoundingClientRect();
+      var p=Math.max(0,Math.min(1,(clientX-r.left)/r.width));
+      wrap.style.clipPath='inset(0 '+((1-p)*100)+'% 0 0)';
+      handle.style.left=(p*100)+'%';
+    }
+    function down(e){ dragging=true; setPos((e.touches?e.touches[0]:e).clientX); e.preventDefault(); }
+    function move(e){ if(!dragging) return; setPos((e.touches?e.touches[0]:e).clientX); }
+    function up(){ dragging=false; }
+    ba.addEventListener('mousedown',down); ba.addEventListener('touchstart',down,{passive:false});
+    window.addEventListener('mousemove',move); window.addEventListener('touchmove',move,{passive:false});
+    window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
+  });
+</script>
+</body>
+</html>
